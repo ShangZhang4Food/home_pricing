@@ -84,5 +84,12 @@ print('rmse for tuned XG: ',np.sqrt(mean_squared_error(y_valid,y_pred)))
 
 ##### Prediction #####
 test_df = pd.read_csv(__location__ + '/test_cleaned.csv')
+del test_df['SalePrice']
 X_test = test_df.values
 y_pred2 = xg2.predict(X_test)
+
+##### Formulate final csv for reporting #####
+ID = list(pd.read_csv(__location__ + '/house-prices-advanced-regression-techniques/train.csv')['Id'])
+result = pd.DataFrame(list(zip(ID, y_pred2)),
+               columns =['Id', 'SalePrice'])
+result.to_csv("Prediction.csv")
