@@ -92,4 +92,4 @@ y_pred2 = xg2.predict(X_test)
 ID = list(pd.read_csv(__location__ + '/house-prices-advanced-regression-techniques/train.csv')['Id'])
 result = pd.DataFrame(list(zip(ID, y_pred2)),
                columns =['Id', 'SalePrice'])
-result.to_csv("Prediction.csv")
+result.to_csv(__location__ + '/Prediction.csv')
